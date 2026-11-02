@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 168" width="120" height="168">
+  <!-- Fondo -->
+  <defs>
+    <linearGradient id="bgespadas" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="white"/>
+      <stop offset="100%" stop-color="#F0F0FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="116" height="164" rx="9" ry="9"
+        fill="url(#bgespadas)" stroke="#1A237E" stroke-width="2.5"/>
+
+  <!-- Línea decorativa interior -->
+  <rect x="5" y="5" width="110" height="158" rx="7" ry="7"
+        fill="none" stroke="#1A237E" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Valor esquina superior izquierda -->
+  <text x="10" y="22" font-family="Georgia,serif" font-size="19"
+        font-weight="bold" fill="#1A237E">3</text>
+
+  <!-- Símbolo esquina superior izquierda -->
+  <g transform="translate(18,36) scale(0.45)">
+      <line x1="0" y1="-28" x2="0" y2="28" stroke="#1A237E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="-16" y1="-6" x2="16" y2="-6" stroke="#1A237E" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="-10" y1="4" x2="10" y2="4" stroke="#1A237E" stroke-width="2.5" stroke-linecap="round"/>
+      <polygon points="0,-28 -7,-14 7,-14" fill="#3949AB" stroke="#1A237E" stroke-width="1.5"/>
+    </g>
+
+  <!-- Nombre del palo (pequeño) -->
+  <text x="10" y="54" font-family="Arial,sans-serif" font-size="7"
+        fill="#1A237E" opacity="0.6">Espadas</text>
+
+  <!-- Símbolo central grande -->
+  <g transform="translate(60,88) scale(1.05)">
+      <line x1="0" y1="-28" x2="0" y2="28" stroke="#1A237E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="-16" y1="-6" x2="16" y2="-6" stroke="#1A237E" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="-10" y1="4" x2="10" y2="4" stroke="#1A237E" stroke-width="2.5" stroke-linecap="round"/>
+      <polygon points="0,-28 -7,-14 7,-14" fill="#3949AB" stroke="#1A237E" stroke-width="1.5"/>
+    </g>
+
+  <!-- Valor esquina inferior derecha (rotado) -->
+  <g transform="rotate(180,60,84)">
+    <text x="110" y="82" font-family="Georgia,serif" font-size="19"
+          font-weight="bold" fill="#1A237E" text-anchor="end">3</text>
+  </g>
+
+  <!-- Símbolo esquina inferior derecha -->
+  <g transform="translate(102,140) scale(0.45)">
+      <line x1="0" y1="-28" x2="0" y2="28" stroke="#1A237E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="-16" y1="-6" x2="16" y2="-6" stroke="#1A237E" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="-10" y1="4" x2="10" y2="4" stroke="#1A237E" stroke-width="2.5" stroke-linecap="round"/>
+      <polygon points="0,-28 -7,-14 7,-14" fill="#3949AB" stroke="#1A237E" stroke-width="1.5"/>
+    </g>
+
+  <!-- Badge de puntos -->
+  
+      <rect x="86" y="148" width="24" height="14" rx="4" fill="rgba(0,0,0,0.55)"/>
+      <text x="98" y="159" font-family="Arial,sans-serif" font-size="9"
+            font-weight="bold" fill="#3949AB" text-anchor="middle">10pts</text>
+</svg>

@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101819"><title>Apuntador · Bolot</title><link rel="stylesheet" href="css/anotador.css"></head><body>
+<main id="home" class="screen home"><a href="/" class="brand">BOLOT<span>.</span></a><p class="eyebrow">APUNTADOR · EN LA MESA</p><h1>Mano a mano.</h1>
+<button id="new-game" class="big">Nueva partida</button><button id="continue-game" class="big">Continuar partida</button><p id="home-note"></p></main>
+
+<main id="board" class="screen" hidden>
+<header class="bar"><button type="button" id="back-home" class="quiet" aria-label="Volver al inicio">‹ Inicio</button><span class="bar-title">Apuntador</span><label class="goal">Objetivo <select id="goal"><option value="1000">1000</option><option value="1500" selected>1500</option></select></label></header>
+<section class="cols head-cols"><input id="name-a" class="team-name" aria-label="Nombre de la pareja A" maxlength="24" value="Nosotros"><input id="name-b" class="team-name" aria-label="Nombre de la pareja B" maxlength="24" value="Ellos"></section>
+<section class="cols score-cols"><strong class="total" id="score-a">0</strong><strong class="total" id="score-b">0</strong></section>
+<section class="cols sub-cols"><span id="remaining-a">A 1500 de ganar</span><span id="remaining-b">A 1500 de ganar</span></section>
+<p id="winner" class="winner" hidden aria-live="polite"></p>
+<section class="history"><div class="history-head"><h2>La partida</h2><span id="hand-count">0 manos</span></div><div id="history-list"></div></section>
+<div class="board-actions"><button id="undo" class="quiet" hidden>Deshacer última mano</button><span id="save-status" class="status">Guardado en este móvil</span></div>
+<footer class="dock"><button id="insert" class="primary">Insertar puntos</button></footer>
+</main>
+
+<form id="hand-form" class="screen entry" hidden>
+<header class="bar"><span class="bar-title" id="hand-title">Apuntar mano 1</span></header>
+<section class="cols head-cols"><div class="col-name" id="en-a">Nosotros</div><div class="col-name" id="en-b">Ellos</div></section>
+<section class="cols sub-cols preview"><span><b id="preview-a">-</b></span><span><b id="preview-b">-</b></span></section>
+<section class="cols">
+<div class="side" data-team="0"><div class="input-row"><input id="cards-a" class="hand-points" type="number" inputmode="numeric" min="0" max="162" step="1" placeholder="Puntos" aria-label="Puntos de la mano de la pareja A"><button type="button" class="del" data-del aria-label="Borrar puntos">DEL ⌫</button></div>
+<button type="button" class="ir" data-bidder="0" aria-pressed="true">Hemos ido</button><div class="cante-buttons" id="cantes-a"></div><button type="button" class="bolot-button" data-bolot="0" aria-pressed="false">Bolot +20</button><button type="button" class="capote-button" data-capote="0" aria-pressed="false">CAPOTÀ!</button><div class="cante-added" id="added-a"></div></div>
+<div class="side" data-team="1"><div class="input-row"><input id="cards-b-input" class="hand-points" type="number" inputmode="numeric" min="0" max="162" step="1" placeholder="Puntos" aria-label="Puntos de la mano de la pareja B"><button type="button" class="del" data-del aria-label="Borrar puntos">DEL ⌫</button></div>
+<button type="button" class="ir" data-bidder="1" aria-pressed="false">Hemos ido</button><div class="cante-buttons" id="cantes-b"></div><button type="button" class="bolot-button" data-bolot="1" aria-pressed="false">Bolot +20</button><button type="button" class="capote-button" data-capote="1" aria-pressed="false">CAPOTÀ!</button><div class="cante-added" id="added-b"></div></div>
+</section>
+<p class="hint center">Los puntos incluyen las últimas, sin cantes. Escribe en un lado y el otro se completa a 162.</p>
+<label class="label" id="clash-field" for="cante-team" hidden>¿Quién ganó el choque de cantes?<select id="cante-team"><option value="none">Seleccionar pareja</option><option value="0">Nosotros</option><option value="1">Ellos</option></select></label>
+<p id="preview-note" aria-live="polite">Introduce los puntos de cartas.</p><p id="error" role="alert" hidden></p>
+<div class="entry-actions"><button type="submit" id="save-hand" class="primary">Aceptar</button><button type="button" id="cancel-edit" class="secondary">Cancelar</button></div>
+</form>
+<script type="module" src="js/anotador.js"></script></body></html>
+

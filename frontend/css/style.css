@@ -1,0 +1,1255 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --verde: #1a5c1a;
+  --verde-oscuro: #0d3a0d;
+  --verde-borde: #2a7a2a;
+  --oro: #ffd700;
+  --crema: #fffdf0;
+  --texto: #f0e6c8;
+  --oros: #d4a017;
+  --copas: #c0392b;
+  --espadas: #2c3e8c;
+  --bastos: #27763b;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--verde);
+  color: var(--texto);
+  min-height: 100vh;
+  user-select: none;
+}
+
+.oculto { display: none !important; }
+
+/* ── Pantalla de inicio ─────────────────────────────────────── */
+
+#pantalla-inicio, #pantalla-sala {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1.5rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+#pantalla-inicio h1, #pantalla-sala h1 {
+  font-size: 4rem;
+  color: var(--oro);
+  letter-spacing: .15em;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+#pantalla-inicio .subtitle { font-size: 1.1rem; opacity: .75; }
+
+.inicio-opciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ── Modos de inicio (1 jugador / multijugador) ─────────────── */
+
+.inicio-modos {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modo-card {
+  background: var(--verde-oscuro);
+  border: 1px solid var(--verde-borde);
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-width: 220px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  align-items: stretch;
+}
+
+.modo-card h2 { color: var(--oro); font-size: 1.2rem; margin: 0; }
+.modo-desc { font-size: .85rem; opacity: .65; margin: 0; }
+
+.modo-card input[type="text"] {
+  padding: .5rem .8rem;
+  border-radius: 6px;
+  border: 1px solid var(--verde-borde);
+  background: rgba(255,255,255,.07);
+  color: var(--texto);
+  font-size: .95rem;
+  text-align: center;
+}
+
+.multi-acciones { display: flex; flex-direction: column; gap: .7rem; }
+.crear-sala-wrap, .unirse-sala-wrap { display: flex; flex-direction: column; gap: .4rem; }
+
+/* ── Pantalla sala de espera ────────────────────────────────── */
+
+.sala-codigo-label { font-size: 1.1rem; opacity: .8; }
+.sala-codigo-label strong { color: var(--oro); font-size: 1.5rem; letter-spacing: .1em; }
+.sala-subtitle { font-size: .85rem; opacity: .55; }
+
+.sala-equipos {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sala-equipo {
+  background: var(--verde-oscuro);
+  border: 1px solid var(--verde-borde);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  align-items: center;
+}
+
+.sala-equipo.eq0 { border-color: #4a7abf; }
+.sala-equipo.eq1 { border-color: #bf4a4a; }
+.sala-equipo h3 { margin: 0; font-size: 1rem; }
+.sala-equipo.eq0 h3 { color: #7dd4fc; }
+.sala-equipo.eq1 h3 { color: #f87171; }
+
+.sala-vs { font-size: 1.5rem; font-weight: 700; opacity: .4; align-self: center; }
+
+.sala-slot {
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  border: 1px dashed rgba(255,255,255,.2);
+  min-width: 120px;
+  text-align: center;
+  font-size: .9rem;
+  color: rgba(255,255,255,.4);
+}
+
+.sala-slot.ocupado {
+  border-color: rgba(255,255,255,.4);
+  color: var(--texto);
+  font-weight: 600;
+}
+
+.sala-slot.yo { border-color: var(--oro); color: var(--oro); }
+
+.sala-acciones { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+.sala-esperando { font-size: .9rem; opacity: .55; font-style: italic; }
+
+/* ── Panel de reconexión ──────────────────────────────────────── */
+
+.reconectar-panel {
+  background: rgba(255,215,0,.12);
+  border: 1.5px solid var(--oro);
+  border-radius: 10px;
+  padding: .8rem 1.2rem;
+  text-align: center;
+  max-width: 380px;
+  width: 100%;
+}
+.reconectar-panel p { font-size: .9rem; margin-bottom: .6rem; }
+.reconectar-botones { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
+.btn-secundario {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.6);
+  font-size: .82rem;
+}
+.btn-secundario:hover { border-color: rgba(255,255,255,.6); color: #fff; }
+
+/* ── Botón resync en cabecera ─────────────────────────────────── */
+.btn-resync {
+  position: absolute;
+  right: .5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.6);
+  font-size: 1.1rem;
+  min-height: unset;
+  padding: .2rem .5rem;
+  border-radius: 6px;
+}
+.btn-resync:hover { border-color: var(--oro); color: var(--oro); }
+
+/* ── Botón última baza (solo móvil) ──────────────────────────── */
+/* ── Botón flotante + panel última baza (solo móvil) ─────────── */
+.btn-ultima-baza {
+  display: none; /* solo se muestra en móvil */
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 120;
+  background: rgba(0,0,0,.65);
+  border: 1px solid rgba(255,255,255,.35);
+  color: #fff;
+  font-size: .78rem;
+  min-height: unset;
+  padding: .35rem .75rem;
+  border-radius: 20px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.btn-ultima-baza:active { background: rgba(0,0,0,.85); }
+
+.ultima-baza-panel {
+  position: fixed;
+  bottom: 3.5rem;
+  right: .75rem;
+  z-index: 119;
+  background: rgba(20,20,20,.92);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 10px;
+  padding: .5rem .6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  max-width: 220px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.6);
+}
+.ultima-baza-panel .ubp-carta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .1rem;
+  font-size: .65rem;
+  color: rgba(255,255,255,.7);
+}
+.ultima-baza-panel .ubp-ganador-label {
+  width: 100%;
+  text-align: center;
+  font-size: .68rem;
+  color: var(--oro);
+  font-weight: 600;
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: .25rem;
+  margin-top: .1rem;
+}
+
+@media (max-width: 480px) {
+  .inicio-modos { flex-direction: column; }
+  .modo-card { min-width: unset; width: 100%; max-width: 340px; }
+  .btn-ultima-baza:not(.oculto) { display: block; }
+}
+
+/* ── Bocadillos de cante en la primera ──────────────────────── */
+.cante-bubble {
+  display: inline-block;
+  background: #2ecc71;
+  color: #000;
+  font-size: .78rem;
+  font-weight: 700;
+  padding: .22rem .6rem;
+  border-radius: 999px;
+  margin: .25rem auto 0;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,.4);
+  animation: bubble-in .25s ease-out;
+}
+@keyframes bubble-in {
+  from { opacity: 0; transform: scale(.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Timer de turno ─────────────────────────────────────────── */
+#timer-turno {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--oro);
+  text-align: center;
+  min-width: 2.5rem;
+  transition: color .3s;
+}
+#timer-turno.urgente { color: #e74c3c; }
+
+/* ── Mesa de juego ──────────────────────────────────────────── */
+
+#mesa {
+  display: grid;
+  grid-template-areas:
+    "cabecera cabecera cabecera historial"
+    ".        arriba   .        historial"
+    "izq      centro   der      historial"
+    ".        abajo    .        historial";
+  grid-template-columns: 160px 1fr 160px 240px;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  gap: .5rem;
+  padding: .5rem;
+}
+
+/* ── Cabecera ───────────────────────────────────────────────── */
+
+#cabecera {
+  grid-area: cabecera;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  position: relative;
+  background: var(--verde-oscuro);
+  border: 1px solid var(--verde-borde);
+  border-radius: 8px;
+  padding: .5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.marcador {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: 1rem;
+}
+
+.marcador .equipo em {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--oro);
+  margin-left: .3rem;
+}
+
+.marcador .separador { opacity: .4; }
+.objetivo-label { opacity: .5; font-size: .85rem; }
+
+.triunfo-badge {
+  padding: .3rem .9rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: .9rem;
+  border: 2px solid currentColor;
+}
+.triunfo-badge.palo-oros    { color: var(--oros);    border-color: var(--oros); }
+.triunfo-badge.palo-copas   { color: var(--copas);   border-color: var(--copas); }
+.triunfo-badge.palo-espadas { color: var(--espadas); border-color: var(--espadas); }
+.triunfo-badge.palo-bastos  { color: var(--bastos);  border-color: var(--bastos); }
+.triunfo-badge.triunfo-propuesto { opacity: .65; }
+
+.quien-va-badge {
+  padding: .3rem .9rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: .9rem;
+  border: 2px solid;
+}
+.quien-va-badge.eq0 { color: #7dd4fc; border-color: #7dd4fc; }
+.quien-va-badge.eq1 { color: #f87171; border-color: #f87171; }
+
+.puntos-mano-badge {
+  padding: .2rem .7rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  font-size: .82rem;
+  color: var(--texto);
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+/* ── Zonas de jugadores ─────────────────────────────────────── */
+
+.zona-jugador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+}
+
+.zona-arriba { grid-area: arriba; }
+.zona-abajo  { grid-area: abajo;  padding-bottom: .5rem; }
+.zona-izq    { grid-area: izq;    justify-content: center; }
+.zona-der    { grid-area: der;    justify-content: center; }
+
+.nombre-jugador {
+  font-size: .78rem;
+  font-weight: 600;
+  opacity: .85;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nombre-jugador.vertical {
+  writing-mode: vertical-rl;
+  flex-direction: column;
+}
+
+.indicador-turno {
+  color: var(--oro);
+  font-size: 1rem;
+  animation: pulso .8s ease-in-out infinite alternate;
+}
+
+@keyframes pulso {
+  from { opacity: .3; }
+  to   { opacity: 1; }
+}
+
+.tag-equipo {
+  font-size: .68rem;
+  padding: .1rem .4rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.tag-equipo.eq0 { background: #1a4a8a; color: #acd; }
+.tag-equipo.eq1 { background: #7a1a1a; color: #daa; }
+
+/* ── Manos ──────────────────────────────────────────────────── */
+
+.mano {
+  display: flex;
+  gap: .25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mano-horizontal { flex-direction: row; }
+.mano-vertical   { flex-direction: column; }
+
+/* ── Cartas ─────────────────────────────────────────────────── */
+
+.carta {
+  background: #fff;
+  border-radius: 7px;
+  border: 2px solid #ccc;
+  width: 80px;
+  height: 112px;
+  position: relative;
+  cursor: default;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: 1px 3px 7px rgba(0,0,0,.45);
+  flex-shrink: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  overflow: hidden;
+}
+
+.carta-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 5px;
+}
+
+/* Esquinas superior-izquierda e inferior-derecha */
+.c-tl { position: absolute; top: 3px; left: 4px;  display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.c-br { position: absolute; bottom: 3px; right: 4px; display: flex; flex-direction: column; align-items: center; line-height: 1; transform: rotate(180deg); }
+.c-num { font-size: .8rem; font-weight: 900; line-height: 1; }
+.c-sym { font-size: .55rem; line-height: 1.1; }
+
+/* Símbolo central */
+.c-cnt {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Figura (Sota 10 / Caballo 11 / Rey 12) */
+.c-face {
+  position: absolute;
+  inset: 18px 4px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.c-face-num {
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-family: Georgia, serif;
+  opacity: .9;
+}
+.carta.palo-oros .c-face    { background: rgba(184,135,0,.12); border: 1px solid rgba(184,135,0,.35); }
+.carta.palo-copas .c-face   { background: rgba(200,24,24,.12); border: 1px solid rgba(200,24,24,.35); }
+.carta.palo-espadas .c-face { background: rgba(22,56,192,.12); border: 1px solid rgba(22,56,192,.35); }
+.carta.palo-bastos .c-face  { background: rgba(42,140,20,.12); border: 1px solid rgba(42,140,20,.35); }
+
+/* Badge de puntos (centro inferior) */
+.c-pts {
+  position: absolute;
+  bottom: 3px; left: 50%;
+  transform: translateX(-50%);
+  font-size: .48rem;
+  font-weight: 700;
+  color: #333;
+  background: rgba(255,200,0,.75);
+  padding: 0 3px;
+  border-radius: 2px;
+  line-height: 1.5;
+  font-family: system-ui, sans-serif;
+}
+
+.carta-pequeña { width: 54px; height: 76px; }
+.carta-pequeña .c-num { font-size: .65rem; }
+.carta-pequeña .c-face { inset: 14px 3px; }
+.carta-pequeña .c-face-num { font-size: 1.1rem; }
+
+/* Colores por palo */
+.carta.palo-oros    { border-color: #b8870b; color: #b8870b; }
+.carta.palo-copas   { border-color: #b83030; color: #b83030; }
+.carta.palo-espadas { border-color: #1a347a; color: #1a347a; }
+.carta.palo-bastos  { border-color: #1a6030; color: #1a6030; }
+
+/* Triunfo */
+.carta.triunfo {
+  outline: 2.5px solid var(--oro);
+  outline-offset: 2px;
+  box-shadow: 0 0 10px rgba(255,215,0,.55), 1px 3px 7px rgba(0,0,0,.45);
+}
+
+/* Jugable */
+.carta.jugable { cursor: pointer; }
+.carta.jugable:hover {
+  transform: translateY(-14px) scale(1.07);
+  box-shadow: 0 14px 26px rgba(0,0,0,.65);
+  z-index: 10;
+}
+
+/* No jugable */
+.carta.no-jugable { opacity: .38; filter: saturate(.25); }
+
+/* Dorso */
+.carta.carta-dorso {
+  background: linear-gradient(145deg, #1e3a6e, #0d1f3e);
+  border-color: #0d1f3e;
+}
+.dorso-inner {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 3px;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,.04) 4px, rgba(255,255,255,.04) 5px),
+    repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(255,255,255,.04) 4px, rgba(255,255,255,.04) 5px);
+}
+
+/* Animación al aparecer en la baza */
+@keyframes cartaAparece {
+  from { transform: scale(.5) rotate(-8deg); opacity: 0; }
+  to   { transform: scale(1)  rotate(0deg);  opacity: 1; }
+}
+.carta-en-baza .carta { animation: cartaAparece .22s ease-out; }
+
+/* ── Centro ─────────────────────────────────────────────────── */
+
+#centro {
+  grid-area: centro;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  background: var(--verde-oscuro);
+  border: 1px solid var(--verde-borde);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+#carta-mesa-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .3rem;
+}
+
+.etiq { font-size: .72rem; opacity: .6; }
+
+/* ── Baza actual (grid posicional) ──────────────────────────── */
+
+.baza-actual {
+  display: grid;
+  grid-template-areas:
+    ".    top  ."
+    "left mid  right"
+    ".    bot  .";
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto auto auto;
+  gap: .4rem;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Área central vacía (estética) */
+.baza-actual::after {
+  content: "";
+  grid-area: mid;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.carta-mesa-grande { width: 100px !important; height: 140px !important; }
+
+.baza-slot         { display: flex; flex-direction: column; align-items: center; gap: .2rem; }
+.baza-slot-j0, .baza-pos-bot   { grid-area: bot; }
+.baza-slot-j1, .baza-pos-right { grid-area: right; }
+.baza-slot-j2, .baza-pos-top   { grid-area: top; }
+.baza-slot-j3, .baza-pos-left  { grid-area: left; }
+
+.carta-en-baza {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2rem;
+}
+
+.baza-jugador-label {
+  font-size: .62rem;
+  font-weight: 600;
+  padding: .1rem .4rem;
+  border-radius: 4px;
+}
+.baza-jugador-label.eq0 { background: #1a4a8a; color: #acd; }
+.baza-jugador-label.eq1 { background: #7a1a1a; color: #daa; }
+
+/* ── Acciones ───────────────────────────────────────────────── */
+
+#acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+}
+
+/* ── Modo espectador: sin controles de juego ─────────────────── */
+.modo-espectador #acciones,
+.modo-espectador #timer-turno,
+.modo-espectador #btn-nueva-mano,
+.modo-espectador #cantes-pendientes-panel { display: none !important; }
+
+.accion-label {
+  font-size: .88rem;
+  text-align: center;
+  opacity: .85;
+}
+
+.accion-label.tu-turno {
+  color: var(--oro);
+  font-weight: 600;
+  opacity: 1;
+}
+
+.accion-label.esperando {
+  opacity: .5;
+  font-style: italic;
+}
+
+.palos-segundas {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Botones ────────────────────────────────────────────────── */
+
+button {
+  padding: .45rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--oro);
+  color: #1a1a1a;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: .9rem;
+  transition: background .15s, transform .1s;
+}
+button:hover { background: #ffec6e; transform: translateY(-1px); }
+
+.btn-voy    { background: #27ae60; color: #fff; }
+.btn-voy:hover { background: #2ecc71; }
+
+.btn-no-voy { background: #c0392b; color: #fff; }
+.btn-no-voy:hover { background: #e74c3c; }
+
+.btn-palo {
+  min-width: 90px;
+  background: var(--verde-oscuro);
+  color: var(--texto);
+  border: 2px solid currentColor;
+}
+.btn-palo.palo-oros    { color: var(--oros); }
+.btn-palo.palo-copas   { color: var(--copas); }
+.btn-palo.palo-espadas { color: var(--espadas); }
+.btn-palo.palo-bastos  { color: var(--bastos); }
+.btn-palo:hover { background: #1a5a1a; }
+
+#btn-nueva-mano { background: var(--oro); }
+
+/* ── Cantes ─────────────────────────────────────────────────── */
+
+/* ── Badge de ganador de baza ────────────────────────────────── */
+
+.baza-win-badge {
+  margin-top: .3rem;
+  padding: .2rem .5rem;
+  border-radius: 6px;
+  font-size: .7rem;
+  font-weight: 700;
+  text-align: center;
+  animation: pulso 1s ease infinite alternate;
+}
+.baza-win-badge.eq0 { background: #0d3a18; color: #7dff9a; border: 1px solid #2ee050; }
+.baza-win-badge.eq1 { background: #3a0d10; color: #ffaaaa; border: 1px solid #cc4444; }
+
+@keyframes pulso {
+  from { opacity: .7; }
+  to   { opacity: 1; }
+}
+
+/* ── Cantes pendientes del humano ────────────────────────────── */
+
+#cantes-pendientes-panel {
+  background: linear-gradient(135deg, #1a3a0a, #0a2a18);
+  border: 2px solid #4aaa2a;
+  border-radius: 10px;
+  padding: .6rem 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.cantes-pendientes-titulo {
+  font-size: .85rem;
+  font-weight: 700;
+  color: #b8ffc8;
+  margin-bottom: .5rem;
+}
+
+.cantes-pendientes-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  justify-content: center;
+}
+
+.btn-cante {
+  padding: .4rem .9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  transition: filter .15s;
+}
+.btn-cante:hover { filter: brightness(1.2); }
+
+.btn-declarar {
+  background: #1a6a2a;
+  color: #c8ffc8;
+  border: 1px solid #3aaa4a;
+}
+
+.cante-pts-badge {
+  background: #0a3a18;
+  padding: .1rem .35rem;
+  border-radius: 4px;
+  font-size: .75rem;
+  color: #7dff9a;
+}
+
+.btn-omitir {
+  background: #3a2a2a;
+  color: #ccaaaa;
+  border: 1px solid #885555;
+  font-size: .78rem;
+}
+
+#cantes-panel {
+  background: rgba(0,0,0,.3);
+  border-radius: 6px;
+  padding: .35rem .7rem;
+  font-size: .78rem;
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cante-tag {
+  padding: .12rem .45rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.cante-tag.eq0 { background: #1a4a8a; color: #acd; }
+.cante-tag.eq1 { background: #7a1a1a; color: #daa; }
+
+/* ── Mensaje de fin de mano ─────────────────────────────────── */
+
+#mensaje-fase { width: 100%; }
+
+.fin-mano-resumen {
+  background: rgba(0,0,0,.5);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+.fin-mano-resumen h3 {
+  color: var(--oro);
+  margin-bottom: .4rem;
+  font-size: 1.1rem;
+}
+
+.resultado-mano {
+  font-size: .95rem;
+  margin-bottom: .6rem;
+  font-weight: 600;
+}
+
+.fin-partida {
+  margin-top: .8rem;
+  font-size: 1.2rem;
+  color: var(--oro);
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,.5);
+}
+
+.tabla-puntos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: .5rem;
+  font-size: .86rem;
+}
+.tabla-puntos th,
+.tabla-puntos td {
+  padding: .28rem .5rem;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  text-align: center;
+}
+.tabla-puntos th { opacity: .65; font-size: .76rem; }
+.tabla-puntos tr.total td { font-weight: 700; border-top: 1px solid rgba(255,255,255,.25); }
+.tabla-puntos tr.total-juego td { color: var(--oro); font-size: .95rem; }
+
+/* ── Errores ────────────────────────────────────────────────── */
+
+.error-msg {
+  color: #ff6b6b;
+  font-size: .85rem;
+  animation: fadeout 3s forwards;
+}
+
+@keyframes fadeout {
+  0%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── Chip del repartidor ─────────────────────────────────────── */
+
+.dealer-chip {
+  display: inline-block;
+  background: #b8860b;
+  color: #fff8e0;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: .15rem .5rem;
+  border-radius: 999px;
+  border: 1px solid #ffd700;
+  margin-left: .4rem;
+  letter-spacing: .03em;
+  vertical-align: middle;
+}
+
+/* ── Overlay de reparto ──────────────────────────────────────── */
+
+.deal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 40, 10, .82);
+  border-radius: 12px;
+}
+
+.deal-overlay-inner {
+  text-align: center;
+  animation: fadeInPop .3s ease;
+}
+
+.deal-anim {
+  font-size: 4rem;
+  animation: dealSpin 1.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes dealSpin {
+  0%   { transform: rotateY(0deg); }
+  50%  { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.deal-msg {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffd700;
+  margin-top: .6rem;
+  letter-spacing: .05em;
+}
+
+/* ── Overlay de enseñar cante (segunda ronda) ───────────────── */
+
+#cante-mostrar-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  background: rgba(10, 40, 10, .9);
+  border-radius: 12px;
+  padding: 1rem;
+  animation: fadeInPop .25s ease;
+}
+
+#cante-mostrar-overlay.oculto { display: none; }
+
+#cante-mostrar-titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--oro);
+  text-align: center;
+  letter-spacing: .04em;
+}
+
+#cante-mostrar-cartas {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Overlay de decisión de subasta ─────────────────────────── */
+
+#subasta-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 30, 10, .78);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+#subasta-overlay.oculto { display: none; }
+
+.subasta-overlay-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  padding: 1.1rem 2.2rem;
+  border-radius: 16px;
+  text-align: center;
+  letter-spacing: .04em;
+  box-shadow: 0 4px 24px rgba(0,0,0,.5);
+  animation: fadeInPop .25s ease;
+}
+
+#subasta-overlay.decidiendo .subasta-overlay-text {
+  background: #1c3a50;
+  color: #a8d8ff;
+  border: 2px solid #5ab4ff;
+}
+
+#subasta-overlay.voy .subasta-overlay-text {
+  background: #0d3a18;
+  color: #7dff9a;
+  border: 3px solid #2ee050;
+}
+
+#subasta-overlay.pasa .subasta-overlay-text {
+  background: #3a1010;
+  color: #ffaaaa;
+  border: 2px solid #cc4444;
+}
+
+@keyframes fadeInPop {
+  from { opacity: 0; transform: scale(.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Historial de bazas ──────────────────────────────────────── */
+
+#historial-bazas {
+  grid-area: historial;
+  background: var(--verde-oscuro);
+  border: 1px solid var(--verde-borde);
+  border-radius: 10px;
+  padding: .5rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.historial-titulo {
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--oro);
+  opacity: .8;
+  padding: .2rem .3rem;
+  border-bottom: 1px solid var(--verde-borde);
+  flex-shrink: 0;
+}
+
+#historial-lista {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  overflow-y: auto;
+}
+
+.historial-vacio {
+  font-size: .78rem;
+  opacity: .45;
+  text-align: center;
+  padding: .5rem;
+}
+
+.baza-card {
+  border-radius: 7px;
+  padding: .4rem .5rem;
+  border-left: 3px solid transparent;
+  background: rgba(0,0,0,.2);
+}
+.baza-card.eq0 { border-color: #4a7abf; }
+.baza-card.eq1 { border-color: #bf4a4a; }
+
+.baza-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .35rem;
+}
+
+.baza-num {
+  font-size: .7rem;
+  font-weight: 700;
+  opacity: .6;
+}
+
+.baza-ganador {
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .1rem .4rem;
+  border-radius: 4px;
+}
+.baza-ganador.eq0 { background: #1a4a8a; color: #acd; }
+.baza-ganador.eq1 { background: #7a1a1a; color: #daa; }
+
+.baza-card-cartas {
+  display: flex;
+  gap: .3rem;
+  flex-wrap: wrap;
+}
+
+.baza-carta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .15rem;
+}
+
+.baza-carta-item.ganadora .carta {
+  outline: 2px solid var(--oro);
+  outline-offset: 1px;
+}
+
+.baza-j-label {
+  font-size: .58rem;
+  font-weight: 600;
+  padding: .08rem .3rem;
+  border-radius: 3px;
+}
+.baza-j-label.eq0 { background: #1a4a8a; color: #acd; }
+.baza-j-label.eq1 { background: #7a1a1a; color: #daa; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  #mesa {
+    grid-template-areas:
+      "cabecera cabecera cabecera"
+      ".        arriba   ."
+      "izq      centro   der"
+      ".        abajo    ."
+      "historial historial historial";
+    grid-template-columns: 130px 1fr 130px;
+    grid-template-rows: auto auto 1fr auto auto;
+  }
+
+  #historial-bazas {
+    max-height: 220px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: flex-start;
+  }
+
+  #historial-lista {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: .4rem;
+  }
+
+  .baza-card { min-width: 180px; }
+
+  .carta { width: 65px; height: 91px; }
+  .carta-pequeña { width: 44px; height: 62px; }
+}
+
+@media (max-width: 600px) {
+  #mesa { grid-template-columns: 100px 1fr 100px; }
+  .carta { width: 54px; height: 76px; }
+  .carta .c-num { font-size: .65rem; }
+  .carta-pequeña { width: 38px; height: 54px; }
+}
+
+/* ══ Móvil (≤480px) — layout vertical, ocultar laterales ══════ */
+
+@media (max-width: 480px) {
+  /* Columna única: J1 y J3 se ocultan; J2 y J0 en vertical */
+  #mesa {
+    grid-template-areas:
+      "cabecera"
+      "arriba"
+      "centro"
+      "abajo";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    gap: .3rem;
+    padding: .3rem;
+  }
+
+  /* Ocultar zonas laterales y historial */
+  .zona-izq, .zona-der { display: none; }
+  #historial-bazas    { display: none; }
+
+  /* Cabecera compacta */
+  #cabecera {
+    gap: .4rem;
+    padding: .35rem .6rem;
+    font-size: .82rem;
+  }
+  #cabecera .marcador { font-size: .82rem; gap: .5rem; }
+  #cabecera .marcador .equipo em { font-size: 1rem; }
+
+  /* Cartas adaptadas al ancho disponible */
+  .carta {
+    width: clamp(52px, 14vw, 72px);
+    height: clamp(73px, 19.6vw, 101px);
+  }
+  .carta-pequeña {
+    width: clamp(40px, 10.5vw, 56px);
+    height: clamp(56px, 14.7vw, 78px);
+  }
+  .carta-mesa-grande {
+    width: clamp(60px, 16vw, 80px) !important;
+    height: clamp(84px, 22.4vw, 112px) !important;
+  }
+
+  /* Centro más compacto */
+  #centro { padding: .5rem; gap: .5rem; }
+  .baza-actual { gap: .2rem; }
+
+  /* Mano del jugador: más respiro */
+  .zona-abajo { padding-bottom: .4rem; }
+  .zona-abajo .mano { gap: .25rem; flex-wrap: wrap; }
+
+  /* Botones más grandes para táctil */
+  button {
+    min-height: 44px;
+    padding: .55rem 1.1rem;
+    font-size: .92rem;
+  }
+  .btn-palo { min-width: 76px; }
+  .btn-cante { min-height: 40px; }
+
+  /* Zona arriba: ocultar dorsos, solo mostrar nombre */
+  .zona-arriba .mano { display: none; }
+  .zona-arriba { gap: .15rem; padding: .2rem 0; }
+  .nombre-jugador { font-size: .7rem; }
+
+  /* Cartas del jugador (abajo) más grandes — 2 filas de 4 */
+  .zona-abajo .carta {
+    width: clamp(72px, 19.5vw, 88px);
+    height: clamp(101px, 27.3vw, 123px);
+  }
+
+  /* Evitar zoom en iOS al hacer foco en select */
+  select { font-size: 16px; }
+}
+
+/* ══ Touch: reemplaza hover por :active en dispositivos táctiles */
+
+@media (hover: none) {
+  /* Carta jugable: sin lift al hover, feedback en :active */
+  .carta.jugable:hover {
+    transform: none;
+    box-shadow: 1px 3px 7px rgba(0,0,0,.45);
+  }
+  .carta.jugable:active {
+    transform: scale(0.93) translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.6);
+    z-index: 10;
+  }
+
+  /* Botones: sin elevación al hover */
+  button:hover { transform: none; }
+  button:active { transform: scale(0.96); opacity: .9; }
+}
+
+/* Eliminar delay de 300ms en iOS/Android */
+button, .carta, select { touch-action: manipulation; }
+
+/* ── Liga link (pantalla de inicio) ──────────────────────────────────────── */
+.liga-link {
+  display: block;
+  margin-top: .5rem;
+  color: var(--oro);
+  opacity: .55;
+  font-size: .85rem;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity .15s;
+}
+.liga-link:hover { opacity: 1; }
+
+/* Safe area para iPhones con notch/Dynamic Island */
+@supports (padding: env(safe-area-inset-bottom)) {
+  #mesa {
+    padding-bottom: max(.3rem, env(safe-area-inset-bottom));
+    padding-left:   max(.3rem, env(safe-area-inset-left));
+    padding-right:  max(.3rem, env(safe-area-inset-right));
+  }
+}
+

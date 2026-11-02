@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolot</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/redesign.css" />
+</head>
+<body>
+
+  <!-- ═══ Pantalla de inicio ═══════════════════════════════════════════════ -->
+  <div id="pantalla-inicio">
+    <header class="home-header"><span class="wordmark">BOLOT<span>.</span></span><span class="home-location">● Sagunto · Baraja española</span></header>
+    <div class="home-intro"><p class="home-eyebrow">El juego de cartas de Sagunto</p><h1>La partida empieza aquí.</h1>
+    <p class="subtitle">La mesa de siempre, ahora contigo donde estés. Juega una mano contra la máquina o reúne a tus amigos en una sala privada.</p></div>
+
+    <!-- Panel de reconexión (aparece si hay sesión guardada) -->
+    <div id="reconectar-panel" class="reconectar-panel oculto">
+      <p>Partida en curso — sala <strong class="rc-codigo"></strong> como <strong class="rc-nombre"></strong></p>
+      <div class="reconectar-botones">
+        <button id="btn-reconectar">Volver a la partida</button>
+        <button id="btn-abandonar-sesion" class="btn-secundario">Abandonar</button>
+      </div>
+    </div>
+
+    <div class="inicio-modos">
+      <!-- Modo 1 jugador -->
+      <div class="modo-card">
+        <span class="mode-number">01 / JUEGA A TU RITMO</span><div class="mode-cards" aria-hidden="true"><img src="cards/espadas_1.svg" alt=""><img src="cards/copas_3.svg" alt=""><img src="cards/espadas_12.svg" alt=""></div>
+        <h2>Contra la máquina</h2><p class="modo-desc">Tú y tu compañero contra dos rivales. Entra y juega.</p>
+        <label>Objetivo:
+          <select id="sel-objetivo">
+            <option value="1000">1000</option>
+            <option value="1500">1500</option>
+          </select>
+        </label>
+        <button id="btn-nueva-partida">Empezar partida ↗</button>
+      </div>
+
+      <!-- Modo testeo: propuesta sin desplegar -->
+      <div class="modo-card modo-testeo">
+        <span class="mode-number">02 / ENTRENAR JUNTOS</span><div class="mode-table" aria-hidden="true">J0 + J2</div>
+        <h2>Modo testeo</h2><p class="modo-desc">Tú decides por tu mano y la de tu compañero. Los dos rivales los lleva la máquina.</p>
+        <p class="testeo-nota">Cada decisión se guarda para entrenar la IA.</p>
+        <label>Objetivo: <select id="sel-objetivo-testeo"><option value="1000">1000</option><option value="1500">1500</option></select></label>
+        <button id="btn-testeo" type="button">Iniciar testeo ↗</button>
+      </div>
+
+      <!-- Modo multijugador -->
+      <div class="modo-card">
+        <span class="mode-number">03 / CON TU GENTE</span><div class="mode-table" aria-hidden="true">♠ ♣</div>
+        <h2>Con amigos</h2><p class="modo-desc">Cuatro jugadores. Dos parejas. Una sala para vosotros.</p>
+        <input id="inp-nombre" type="text" placeholder="Tu nombre" maxlength="20" autocomplete="off" />
+        <div class="multi-acciones">
+          <div class="crear-sala-wrap">
+            <label>Objetivo:
+              <select id="sel-objetivo-multi">
+                <option value="1000">1000</option>
+                <option value="1500">1500</option>
+              </select>
+            </label>
+            <label>Modo:
+              <select id="sel-modo-sala">
+                <option value="0">Sin límite</option>
+                <option value="1">20 segundos</option>
+              </select>
+            </label>
+            <button id="btn-crear-sala">Crear sala</button>
+          </div>
+          <div class="unirse-sala-wrap">
+            <input id="inp-codigo" type="text" placeholder="Código (ej: KPLM)" maxlength="4"
+              autocomplete="off" style="text-transform:uppercase" />
+            <button id="btn-unirse-sala">Unirse</button>
+            <button id="btn-ver-partida" class="btn-secundario">Ver partida</button>
+          </div>
+        </div>
+      </div>
+      <div class="modo-card modo-anotador">
+        <span class="mode-number">04 / EN LA MESA</span><div class="mode-table" aria-hidden="true">152 + 10</div>
+        <h2>Apuntador de puntos</h2><p class="modo-desc">Para las partidas de verdad. Cartas, cantes, puestos y capote: la cuenta, sin papel.</p>
+        <p class="testeo-nota">Guarda la partida en este móvil.</p>
+        <a href="/anotador.html" style="display:inline-block;align-self:flex-start;margin-top:auto;background:var(--oro);color:#172322;border-radius:8px;padding:12px 18px;text-decoration:none;font-weight:600;font-size:14px">Llevar la cuenta ↗</a>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <!-- ═══ Pantalla de sala de espera ═══════════════════════════════════════ -->
+  <div id="pantalla-sala" class="oculto">
+    <h1>Bolot</h1>
+    <p class="sala-codigo-label">Código de sala: <strong id="sala-codigo-display"></strong></p>
+    <p class="sala-subtitle">Comparte el código con tus amigos</p>
+
+    <div class="sala-equipos">
+      <div class="sala-equipo eq0">
+        <h3>Equipo A</h3>
+        <div class="sala-slot" id="sala-slot-0"></div>
+        <div class="sala-slot" id="sala-slot-2"></div>
+      </div>
+      <div class="sala-vs">VS</div>
+      <div class="sala-equipo eq1">
+        <h3>Equipo B</h3>
+        <div class="sala-slot" id="sala-slot-1"></div>
+        <div class="sala-slot" id="sala-slot-3"></div>
+      </div>
+    </div>
+
+    <div class="sala-acciones">
+      <button id="btn-cambiar-equipo" class="oculto">Cambiar de equipo</button>
+      <button id="btn-iniciar-sala" class="oculto">¡Empezar!</button>
+      <p id="sala-esperando" class="sala-esperando">Esperando jugadores...</p>
+    </div>
+  </div>
+
+  <!-- ═══ Mesa de juego ════════════════════════════════════════════════════ -->
+  <div id="mesa" class="oculto">
+
+    <!-- Cabecera con marcador -->
+    <header id="cabecera">
+      <div class="marcador">
+        <span class="equipo eq0"><span id="nombre-eq0">Eq A</span> <em id="pts-eq0">0</em></span>
+        <span class="separador">vs</span>
+        <span class="equipo eq1"><span id="nombre-eq1">Eq B</span> <em id="pts-eq1">0</em></span>
+        <span class="objetivo-label" id="objetivo-label"></span>
+      </div>
+      <div id="triunfo-badge" class="triunfo-badge oculto"></div>
+      <div id="quien-va-badge" class="quien-va-badge oculto"></div>
+      <div id="puntos-mano-badge" class="puntos-mano-badge oculto"></div>
+      <span id="testeo-chip" class="testeo-chip oculto">TESTEO · J0 + J2</span>
+      <button id="btn-nueva-mano" class="oculto">Nueva Mano</button>
+      <button id="btn-resync" class="btn-resync oculto" title="Resincronizar estado">⟳</button>
+    </header>
+
+    <!-- Jugador arriba (J2 — compañero) -->
+    <div id="zona-j2" class="zona-jugador zona-arriba">
+      <div class="nombre-jugador">
+        <span class="tag-equipo eq0">Compañero</span>
+        <span id="nombre-j2">J2</span>
+        <span id="dealer-j2" class="dealer-chip oculto">🂠 Reparte</span>
+        <span id="turno-j2" class="indicador-turno oculto">▶</span>
+      </div>
+      <div id="mano-j2" class="mano mano-horizontal"></div>
+    </div>
+
+    <!-- Jugador izquierda (J3) -->
+    <div id="zona-j3" class="zona-jugador zona-izq">
+      <div class="nombre-jugador vertical">
+        <span class="tag-equipo eq1">Rival</span>
+        <span id="nombre-j3">J3</span>
+        <span id="dealer-j3" class="dealer-chip oculto">🂠</span>
+        <span id="turno-j3" class="indicador-turno oculto">▶</span>
+      </div>
+      <div id="mano-j3" class="mano mano-vertical"></div>
+    </div>
+
+    <!-- Centro: carta de mesa, baza actual y acciones -->
+    <div id="centro">
+      <!-- Overlay de reparto -->
+      <div id="deal-overlay" class="deal-overlay oculto">
+        <div class="deal-overlay-inner">
+          <div class="deal-anim">🂠</div>
+          <div id="deal-msg" class="deal-msg"></div>
+        </div>
+      </div>
+      <!-- Overlay de decisión de subasta -->
+      <div id="subasta-overlay" class="subasta-overlay oculto">
+        <div class="subasta-overlay-text"></div>
+      </div>
+      <div id="carta-mesa-wrap" class="oculto">
+        <p class="etiq">Carta de la mesa</p>
+        <div id="carta-mesa"></div>
+      </div>
+      <div id="baza-actual-wrap">
+        <div id="baza-actual" class="baza-actual"></div>
+      </div>
+      <div id="acciones"></div>
+      <div id="timer-turno" class="oculto"></div>
+      <!-- Overlay de enseñar cante (segunda ronda) -->
+      <div id="cante-mostrar-overlay" class="oculto">
+        <p id="cante-mostrar-titulo"></p>
+        <div id="cante-mostrar-cartas"></div>
+      </div>
+      <div id="cantes-pendientes-panel" class="oculto"></div>
+      <div id="mensaje-fase"></div>
+      <div id="cantes-panel" class="oculto"></div>
+    </div>
+
+    <div id="bolot-pendiente-panel" class="oculto"></div>
+
+    <!-- Jugador derecha (J1) -->
+    <div id="zona-j1" class="zona-jugador zona-der">
+      <div class="nombre-jugador vertical">
+        <span class="tag-equipo eq1">Rival</span>
+        <span id="nombre-j1">J1</span>
+        <span id="dealer-j1" class="dealer-chip oculto">🂠</span>
+        <span id="turno-j1" class="indicador-turno oculto">▶</span>
+      </div>
+      <div id="mano-j1" class="mano mano-vertical"></div>
+    </div>
+
+    <!-- Jugador abajo (J0 — tú) -->
+    <div id="zona-j0" class="zona-jugador zona-abajo">
+      <div class="nombre-jugador">
+        <span class="tag-equipo eq0">Tú</span>
+        <span id="nombre-j0">J0</span>
+        <span id="dealer-j0" class="dealer-chip oculto">🂠 Repartes tú</span>
+        <span id="turno-j0" class="indicador-turno oculto">▶</span>
+      </div>
+      <div id="mano-j0" class="mano mano-horizontal"></div>
+    </div>
+
+    <!-- Historial de bazas -->
+    <div id="historial-bazas">
+      <div class="historial-titulo">Historial de bazas</div>
+      <div id="historial-lista"></div>
+    </div>
+
+  </div>
+
+  <!-- Botón flotante + panel última baza (solo móvil) -->
+  <button id="btn-ver-ultima-baza" class="btn-ultima-baza oculto" aria-label="Ver última baza">👁 Última baza</button>
+  <div id="ultima-baza-panel" class="ultima-baza-panel oculto"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
+
+
+

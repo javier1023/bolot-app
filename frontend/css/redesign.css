@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root{--verde:#267346;--verde-oscuro:#20352b;--verde-borde:#65876e;--oro:#e8bf71;--texto:#f4f3e9;--crema:#f4f3e9}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#17251f;color:var(--texto)}
+button{border-radius:8px;background:var(--oro);color:#172322;font-family:inherit;min-height:40px;padding:.55rem 1.15rem}button:hover{background:#f9d28a}.btn-voy{background:var(--oro);color:#172322}.btn-voy:hover{background:#f9d28a}.btn-no-voy{background:#154a33;color:white;border:1px solid #ffffff80}.btn-no-voy:hover{background:#216c49}.btn-secundario{background:#ffffff14;color:var(--texto)}
+#pantalla-inicio{position:relative;justify-content:flex-start;align-items:stretch;text-align:left;gap:0;padding:0;min-height:100dvh;background:#101819}.home-header{height:68px;border-bottom:1px solid #304545;display:flex;justify-content:space-between;align-items:center;padding:0 max(4.5%,calc((100% - 1108px)/2));}.wordmark{font:700 25px 'Space Grotesk',sans-serif;letter-spacing:-1px}.wordmark span{color:var(--oro)}.home-location{font-size:12px;border:1px solid #617457;border-radius:30px;color:#b9ceaa;padding:9px 14px}.home-intro{width:min(1108px,100%);padding:55px 0 30px;margin:0 auto}.home-eyebrow{font-size:12px;font-weight:700;color:var(--oro);letter-spacing:2px;text-transform:uppercase}.home-intro h1{font:600 clamp(40px,5vw,68px)/1.06 'Space Grotesk',sans-serif;letter-spacing:-.045em;color:var(--texto);text-shadow:none;margin:18px 0 18px;max-width:800px}.home-intro .subtitle{font-size:15px!important;line-height:1.6;color:#aec0b8;max-width:550px;opacity:1!important}.inicio-modos{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1108px;width:100%;margin:0 auto;align-items:stretch}.modo-card{position:relative;min-height:320px;max-width:none;min-width:0;border:1px solid #304545;border-radius:20px;background:linear-gradient(125deg,#1c3130,#142122);padding:30px;display:flex;align-items:stretch;gap:10px;overflow:hidden}.modo-card:first-child{background:radial-gradient(circle at 90% 5%,#326853,#20362d 45%,#172a29 85%)}.mode-number{font:600 13px 'Space Grotesk';color:var(--oro);z-index:1}.modo-card h2{font:600 29px 'Space Grotesk';color:var(--texto);margin:45px 0 0}.modo-desc{font-size:14px;line-height:1.4;color:#b4c4bb;opacity:1;margin-bottom:8px}.modo-card label{display:flex;align-items:center;gap:8px;color:#a7beb4;font-size:12px}.modo-card select,.modo-card input[type=text]{font-family:inherit;background:#263d35;border:1px solid #5a7e65;border-radius:7px;color:#fff;padding:8px;font-size:14px}.modo-card button{align-self:flex-start}.modo-card #btn-nueva-partida{margin-top:auto}.mode-cards{display:flex;position:absolute;right:32px;top:39px;transform:rotate(14deg)}.mode-cards img{width:55px;height:78px;object-fit:cover;border:3px solid #fff;border-radius:6px;margin-left:-27px;box-shadow:0 8px 20px #0008}.mode-table{position:absolute;right:35px;top:30px;width:130px;height:95px;border-radius:50%;border:2px solid #6c9b79;display:grid;place-items:center;transform:rotate(-14deg);color:var(--oro);font-size:28px}.multi-acciones{gap:8px}.crear-sala-wrap,.unirse-sala-wrap{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px}.crear-sala-wrap label{width:auto}.unirse-sala-wrap input{width:155px;text-align:left!important}.liga-link{width:min(1108px,100%);text-align:left;margin:30px auto;color:var(--oro);opacity:.85}
+#pantalla-sala{background:#14221d}.sala-equipo{background:#20352b}.sala-equipo.eq0,.sala-equipo.eq1{border-color:#63836d}.sala-equipo.eq0 h3{color:#e8bf71}.sala-equipo.eq1 h3{color:#e1bca7}
+#mesa{position:relative;display:grid;grid-template-areas:"cabecera cabecera historial" "centro centro historial" "abajo abajo historial";grid-template-columns:1fr 1fr 230px;grid-template-rows:65px minmax(350px,1fr) 145px;gap:14px 18px;width:100%;height:100dvh;min-height:620px;padding:18px 4%;background:#17251f;overflow:hidden}
+#cabecera{grid-area:cabecera;background:#20352b;border:1px solid #65876e;border-radius:7px;padding:0 20px;flex-wrap:nowrap;min-height:65px}.marcador{gap:16px;white-space:nowrap}.marcador .equipo em{font:600 28px 'Space Grotesk';color:var(--oro)}.triunfo-badge{margin-left:auto;border:none;font-size:12px;color:var(--oro)!important;white-space:nowrap}.quien-va-badge,.puntos-mano-badge{font-size:11px;padding:4px 6px}.objetivo-label{font-size:11px}
+#centro{grid-area:centro;background:linear-gradient(135deg,#267346,#22804c 46%,#17643f);border:2px solid #8aa977;border-radius:9px;box-shadow:inset 0 0 0 9px #2b7048,0 10px 28px #09190e80;padding:25px;min-height:0;overflow:visible;isolation:isolate}
+#centro:before{content:'';position:absolute;inset:23px;border:1px solid #e3e0bd40;pointer-events:none;z-index:-1}.etiq{opacity:.85;text-transform:uppercase;letter-spacing:1.5px;font-size:10px}.carta-mesa-grande{width:76px!important;height:107px!important}.baza-actual{max-width:470px}.baza-actual:after{display:none}
+.zona-jugador{position:absolute;z-index:3;gap:0}.zona-arriba{top:111px;left:50%;transform:translateX(-50%)}.zona-izq{left:calc(4% + 22px);top:45%;transform:translateY(-50%)}.zona-der{right:calc(4% + 250px);top:45%;transform:translateY(-50%)}.zona-abajo{grid-area:abajo;position:relative;top:auto;left:auto;right:auto;transform:none;padding:0;justify-content:flex-start;align-items:center;min-width:0}.zona-abajo>.nombre-jugador{display:none}.nombre-jugador,.nombre-jugador.vertical{writing-mode:horizontal-tb;flex-direction:row;flex-wrap:nowrap;white-space:nowrap;background:#15422d;padding:7px 10px;border:1px solid #84b183a6;border-radius:8px;font-size:11px;opacity:1}.nombre-jugador .tag-equipo{background:#509463;color:#fff;border-radius:50%;width:25px;height:25px;display:grid;place-items:center;overflow:hidden;font-size:10px}.tag-equipo.eq1{background:#657e64;color:#fff}.zona-arriba .mano,.zona-izq .mano,.zona-der .mano{display:none}
+#historial-bazas{grid-area:historial;background:#20352b;border:1px solid #65876e;border-radius:10px;padding:15px}.historial-titulo{font-size:11px;letter-spacing:2px;color:#a9bbae}
+.zona-abajo .mano{position:relative;display:block;flex-wrap:nowrap;overflow:visible;width:min(610px,100%);height:134px;margin:0 auto}.zona-abajo .mano .carta{position:absolute;bottom:0;width:84px;height:126px;border:3px solid #f7f5ed;border-radius:7px;box-shadow:0 8px 15px #000a;transform-origin:50% 100%;transition:bottom .2s ease,filter .2s ease}.zona-abajo .mano .carta:hover,.zona-abajo .mano .carta:focus-visible{bottom:14px!important;z-index:20!important;transform:var(--fan-rotate)!important}.zona-abajo .mano .carta:nth-child(1){left:8%;--fan-rotate:rotate(-24deg);transform:var(--fan-rotate);z-index:1}.zona-abajo .mano .carta:nth-child(2){left:18%;--fan-rotate:rotate(-18deg);transform:var(--fan-rotate);z-index:2}.zona-abajo .mano .carta:nth-child(3){left:28%;--fan-rotate:rotate(-11deg);transform:var(--fan-rotate);z-index:3}.zona-abajo .mano .carta:nth-child(4){left:38%;--fan-rotate:rotate(-4deg);transform:var(--fan-rotate);z-index:4}.zona-abajo .mano .carta:nth-child(5){left:48%;--fan-rotate:rotate(4deg);transform:var(--fan-rotate);z-index:5}.zona-abajo .mano .carta:nth-child(6){left:58%;--fan-rotate:rotate(11deg);transform:var(--fan-rotate);z-index:6}.zona-abajo .mano .carta:nth-child(7){left:68%;--fan-rotate:rotate(18deg);transform:var(--fan-rotate);z-index:7}.zona-abajo .mano .carta:nth-child(8){left:78%;--fan-rotate:rotate(24deg);transform:var(--fan-rotate);z-index:8}.zona-abajo .mano .carta.jugable{cursor:pointer}.zona-abajo .mano .carta.no-jugable{filter:brightness(.65)}.zona-abajo .mano .carta .carta-img{width:100%;height:100%;object-fit:cover}.zona-abajo .mano .carta .c-pts{z-index:2}
+@media(max-width:900px){#mesa{grid-template-areas:"cabecera" "centro" "abajo";grid-template-columns:1fr;grid-template-rows:62px minmax(350px,1fr) 130px;gap:8px;min-height:580px;padding:8px 9px}.zona-arriba{top:85px}.zona-izq{left:16px;top:40%}.zona-der{right:16px;top:40%}#historial-bazas{display:none}.zona-abajo{display:flex}.zona-abajo .mano{height:120px}}
+@media(max-width:600px){.home-header{height:56px;padding:0 18px}.wordmark{font-size:20px}.home-location{font-size:10px;padding:7px}.home-intro{padding:36px 23px 24px}.home-intro h1{font-size:43px;line-height:1.06}.home-intro .subtitle{font-size:14px!important}.inicio-modos{display:flex;flex-direction:column;gap:15px;padding:0 18px}.modo-card{min-height:240px;padding:22px}.modo-card h2{margin-top:37px;font-size:25px}.modo-card .modo-desc{font-size:13px}.mode-cards{right:25px;top:35px}.mode-cards img{width:40px;height:60px}.mode-table{width:80px;height:60px;right:25px;font-size:18px}.liga-link{padding:0 20px}.modo-card button{font-size:12px}.modo-card select,.modo-card input[type=text]{font-size:16px}.crear-sala-wrap{gap:5px}.crear-sala-wrap label{font-size:11px}.crear-sala-wrap button{padding:5px 9px}.unirse-sala-wrap input{width:125px}#mesa{grid-template-rows:58px minmax(310px,1fr) 115px;min-height:0;height:100dvh;padding:7px 9px;gap:7px;overflow:hidden}#cabecera{min-height:58px;padding:4px 9px;gap:4px;flex-wrap:wrap}.marcador{font-size:11px;gap:7px}.marcador .equipo em{font-size:22px}.objetivo-label{font-size:10px}.triunfo-badge{margin-left:0;font-size:10px;padding:2px}.puntos-mano-badge{display:none!important}.quien-va-badge{font-size:10px;padding:2px 4px;white-space:nowrap}#cabecera:has(#quien-va-badge:not(.oculto)) #triunfo-badge{display:none}#centro{border-radius:6px;box-shadow:inset 0 0 0 5px #2b7048,0 8px 20px #09190e80;padding:15px;gap:7px}#centro:before{inset:12px}.zona-arriba{top:79px}.zona-izq{left:16px;top:35%}.zona-der{right:16px;top:35%}.nombre-jugador{font-size:10px;padding:4px 6px}.nombre-jugador .tag-equipo{width:19px;height:19px;font-size:9px}.zona-abajo{padding:0}.zona-abajo .mano{height:108px;width:min(350px,100%);margin-top:-3px}.zona-abajo .mano .carta{width:62px;height:92px;bottom:5px;border-width:2px;border-radius:5px}.zona-abajo .mano .carta:nth-child(1){left:5%;--fan-rotate:rotate(-19deg)}.zona-abajo .mano .carta:nth-child(2){left:15%;--fan-rotate:rotate(-14deg)}.zona-abajo .mano .carta:nth-child(3){left:25%;--fan-rotate:rotate(-9deg)}.zona-abajo .mano .carta:nth-child(4){left:35%;--fan-rotate:rotate(-3deg)}.zona-abajo .mano .carta:nth-child(5){left:45%;--fan-rotate:rotate(3deg)}.zona-abajo .mano .carta:nth-child(6){left:55%;--fan-rotate:rotate(9deg)}.zona-abajo .mano .carta:nth-child(7){left:65%;--fan-rotate:rotate(14deg)}.zona-abajo .mano .carta:nth-child(8){left:75%;--fan-rotate:rotate(19deg)}.carta-mesa-grande{width:60px!important;height:85px!important}#acciones button{min-height:42px}.baza-actual{max-width:250px}.baza-actual .carta-mesa-grande{width:55px!important;height:77px!important}}
+@media(max-width:350px){.zona-abajo .mano .carta{width:55px}.marcador .equipo em{font-size:18px}.triunfo-badge{font-size:9px}}
+/* Specificity against legacy heading and overlay styles. */
+#pantalla-inicio .home-intro h1{font:600 clamp(40px,5vw,68px)/1.06 'Space Grotesk',sans-serif;letter-spacing:-.045em;color:var(--texto);text-shadow:none;margin:18px 0;max-width:800px}
+#mesa #centro{justify-content:center}
+#mesa .subasta-overlay{background:#132c28ed;border:1px solid #e8bf71;border-radius:12px;color:#f4f3e9;box-shadow:0 15px 35px #071c1880}
+#mesa .subasta-overlay-text{color:#f4f3e9}
+#mesa .nombre-jugador .tag-equipo.eq1{background:#657e64;color:#fff}
+@media(max-width:600px){#pantalla-inicio .home-intro h1{font-size:43px;letter-spacing:-.045em;line-height:1.06}}
+@media(max-width:900px){#mesa .zona-izq,#mesa .zona-der{display:flex!important}.zona-izq .nombre-jugador,.zona-der .nombre-jugador{max-width:110px}}
+@media(max-width:600px){#mesa .zona-izq,#mesa .zona-der{display:flex!important}.zona-izq .nombre-jugador,.zona-der .nombre-jugador{max-width:107px}.zona-izq .nombre-jugador .tag-equipo,.zona-der .nombre-jugador .tag-equipo{flex-shrink:0}#mesa #btn-nueva-mano{position:absolute;right:13px;top:13px;padding:5px 9px;min-height:30px;font-size:11px}#mesa #cabecera:has(#btn-nueva-mano:not(.oculto)){padding-right:100px}.zona-abajo .mano .carta{touch-action:manipulation}}
+#mesa .fin-mano-resumen{position:relative;z-index:6}#mesa:has(.fin-mano-resumen) .zona-izq,#mesa:has(.fin-mano-resumen) .zona-der{opacity:.3;pointer-events:none}
+#mesa .baza-actual .carta-en-baza .carta{opacity:1!important;filter:none!important;box-shadow:0 7px 17px #102c24a8}
+@media(max-width:600px){#mesa .fin-mano-resumen{width:min(340px,100%);max-width:100%;padding:16px 12px}#mesa .fin-mano-resumen .tabla-puntos{font-size:12px}#mesa #btn-ver-ultima-baza{bottom:118px;right:17px;z-index:8;opacity:.9}#mesa .zona-abajo .mano{z-index:4}#mesa .zona-abajo .mano .carta.no-jugable{filter:brightness(.86)}#mesa .zona-abajo .mano .carta.jugable{filter:none}}
+@media(max-width:600px){#btn-ver-ultima-baza{bottom:140px;right:18px;z-index:120}#ultima-baza-panel{bottom:179px;right:18px}#mesa:has(.fin-mano-resumen) .zona-izq,#mesa:has(.fin-mano-resumen) .zona-der{display:none!important}#mesa:has(.fin-mano-resumen) #cantes-panel{display:none!important}}
+/* Square felt, with the fan outside it so cards stay visible on phones. */
+#mesa #centro{width:min(100%,calc(100dvh - 230px));height:auto;aspect-ratio:1/1;min-height:0;justify-self:center;align-self:center}
+#mesa .zona-abajo .mano .carta.no-jugable{filter:brightness(.88)}
+@media(min-width:901px){#mesa .zona-izq{left:calc(50% - 350px)}#mesa .zona-der{right:calc(50% - 120px)}#mesa .zona-arriba{left:calc(50% - 115px)}}
+@media(max-width:900px){#mesa #centro{width:min(100%,calc(100dvh - 220px))}}
+@media(max-width:600px){#mesa #centro{width:min(100%,calc(100dvh - 185px))}#mesa .zona-izq,#mesa .zona-der{top:43%}#mesa .zona-arriba{top:calc(50% - min(50vw,calc((100dvh - 185px)/2)) - 18px)}}
+#mesa:has(.fin-mano-resumen) .zona-izq,#mesa:has(.fin-mano-resumen) .zona-der{display:none!important}
+#mesa:has(.fin-mano-resumen) #cantes-panel{display:none!important}
+@media(min-width:901px){#mesa #centro{width:min(100%,calc(100dvh - 295px))}}
+@media(max-width:600px){#mesa{grid-template-rows:58px auto auto;align-content:start}#mesa #centro{margin-top:45px;align-self:start}#mesa .zona-abajo{margin-top:62px}#mesa #btn-ver-ultima-baza{bottom:calc(100dvh - 605px);right:18px}#mesa #ultima-baza-panel{bottom:calc(100dvh - 565px)}}
+@media(max-width:600px){#mesa .zona-arriba{top:137px}#mesa .zona-izq,#mesa .zona-der{top:300px}#mesa:has(.fin-mano-resumen) .zona-arriba{display:none!important}}
+@media(min-width:601px){#mesa:has(.fin-mano-resumen) .zona-arriba{display:none!important}}
+
+#cantes-pendientes-panel{position:absolute;z-index:30;top:50%;left:50%;transform:translate(-50%,-50%);background:#142b23;border:1px solid #e8bf71;border-radius:12px;padding:15px;width:min(310px,90%);box-shadow:0 14px 35px #071b15c9}#cantes-pendientes-panel p{font-size:12px;margin:0 0 9px}#cantes-pendientes-panel button{display:block;width:100%;margin:6px 0;text-align:left;font-size:12px;white-space:normal}#bolot-pendiente-panel{position:fixed;z-index:150;bottom:155px;left:50%;transform:translateX(-50%);background:#142b23;border:2px solid #e8bf71;border-radius:12px;padding:8px;box-shadow:0 8px 30px #000a}#bolot-pendiente-panel button{font-weight:700;font-size:19px;min-height:50px}#acciones #btn-cantar,#acciones #btn-ensenar{margin:6px;background:#e8bf71;color:#172322;font-weight:700}@media(max-width:600px){#bolot-pendiente-panel{bottom:170px}#acciones #btn-cantar,#acciones #btn-ensenar{font-size:14px;min-height:44px}}
+
+#cantes-pendientes-panel{z-index:80;top:70%;max-height:calc(100% - 90px);overflow-y:auto}#mesa:has(#cantes-pendientes-panel:not(.oculto)) .zona-izq,#mesa:has(#cantes-pendientes-panel:not(.oculto)) .zona-der{opacity:.25;pointer-events:none}#mesa:has(#cantes-pendientes-panel:not(.oculto)) #acciones{position:relative;z-index:81}@media(max-width:600px){#cantes-pendientes-panel{top:70%;width:90%;padding:12px}#cantes-pendientes-panel .btn-cante-opcion{font-size:11px}}
+
+#cantes-pendientes-panel{top:calc(100% + 8px);left:50%;transform:translateX(-50%);max-height:45vh;overflow-y:auto;width:min(320px,92%)}#mesa #acciones{position:relative;z-index:82}#mesa:has(#cantes-pendientes-panel:not(.oculto)) .zona-izq,#mesa:has(#cantes-pendientes-panel:not(.oculto)) .zona-der{opacity:.35}#cantes-pendientes-panel p{line-height:1.3}@media(max-width:600px){#cantes-pendientes-panel{top:calc(100% + 5px);max-height:205px}}
+
+#mesa #cantes-pendientes-panel:not(.oculto){position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(330px,calc(100vw - 40px));max-height:min(340px,70dvh);overflow-y:auto;z-index:250;background:#132d25f7;box-shadow:0 0 0 100vmax #0008,0 15px 35px #0009}#mesa #acciones{z-index:auto}#mesa:has(#cantes-pendientes-panel:not(.oculto)) .zona-izq,#mesa:has(#cantes-pendientes-panel:not(.oculto)) .zona-der{opacity:1}#cantes-pendientes-panel .btn-cante-opcion{font-size:12px}#cantes-pendientes-panel .btn-cante-opcion:hover{background:#ffdb98}
+
+#cantes-pendientes-panel #btn-cerrar-cantes{display:block;margin-left:auto;background:transparent;color:#e8bf71;border:1px solid #e8bf71;padding:3px 9px;min-height:28px;font-size:11px;width:auto}#mesa #cantes-pendientes-panel:not(.oculto){top:50%}
+
+#mesa #bolot-pendiente-panel:not(.oculto){position:fixed;z-index:400;top:calc(50dvh + 70px);bottom:auto;left:50%;transform:translateX(-50%);white-space:nowrap;box-shadow:0 0 0 100vmax #0005,0 8px 30px #000a}#mesa #bolot-pendiente-panel button{touch-action:manipulation}
+
+#mesa #bolot-pendiente-panel:not(.oculto){top:calc(50dvh + 80px)}
+#mesa .zona-jugador .cante-bubble{max-width:min(230px,65vw);white-space:normal;line-height:1.2;text-align:center;z-index:12}
+@media(max-width:600px){#mesa #zona-j0 .cante-bubble{bottom:122px;left:50%;transform:translateX(-50%);font-size:10px;max-width:200px}#mesa #zona-j2 .cante-bubble{top:37px;left:50%;transform:translateX(-50%);font-size:10px;max-width:220px}#mesa #zona-j1 .cante-bubble,#mesa #zona-j3 .cante-bubble{font-size:9px;max-width:135px}}
+
+#mesa #bolot-pendiente-panel:not(.oculto){top:calc(50dvh - 40px)}
+
+#mesa #zona-j0 .cante-bubble{position:absolute;bottom:calc(100% + 7px);left:50%;margin:0;transform:translateX(-50%);width:max-content;max-width:min(250px,80vw)}
+@media(max-width:600px){#mesa #zona-j0 .cante-bubble{bottom:calc(100% + 5px);max-width:220px}}
+
+
+/* Decisiones de subasta: limitar y partir el texto entre las placas laterales. */
+#mesa #subasta-overlay{padding:0 clamp(82px,25%,120px);box-sizing:border-box}
+#mesa #subasta-overlay .subasta-overlay-text{box-sizing:border-box;max-width:100%;min-width:0;overflow-wrap:anywhere;white-space:normal;line-height:1.25;padding:.8rem .7rem;font-size:clamp(.85rem,3.1vw,1.35rem)}
+@media(max-width:600px){#mesa #subasta-overlay{padding-inline:clamp(82px,25%,100px)}#mesa #subasta-overlay .subasta-overlay-text{font-size:clamp(.75rem,3.2vw,.95rem);letter-spacing:0;padding:.65rem .3rem}}
+/* El cante enseñado tiene que verse completo y por encima de toda la mesa. */
+#mesa #cante-mostrar-overlay:not(.oculto){position:fixed;inset:0;border-radius:0;z-index:400;background:#081b16ed;padding:24px;box-sizing:border-box}
+#mesa #cante-mostrar-cartas{max-width:min(92vw,650px);gap:8px}
+#mesa #cante-mostrar-cartas .carta{position:relative;width:clamp(54px,16vw,85px);height:clamp(82px,25vw,125px);flex:0 0 auto}
+@media(max-width:600px){#mesa #cante-mostrar-titulo{font-size:1.2rem}#mesa #cante-mostrar-cartas{flex-wrap:nowrap;gap:5px}#mesa #cante-mostrar-cartas .carta{width:clamp(52px,19vw,75px);height:clamp(78px,29vw,112px)}}
+#mesa:has(#cante-mostrar-overlay:not(.oculto)) #centro{z-index:100}
+
+/* Mano propia: cartas sin abanico, centradas y con cuatro por fila al completar ocho. */
+#mesa .zona-abajo{justify-content:center;align-items:center;align-self:start;min-width:0}
+#mesa #mano-j0{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:min(100%,460px);height:auto;max-height:none;margin:0 auto;overflow:visible;justify-items:center;align-items:start}
+#mesa #mano-j0:has(> .carta:nth-child(5):last-child){grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(2px,1vw,7px)}
+#mesa #mano-j0 .carta:nth-child(n){position:relative;left:auto;bottom:auto;width:100%;height:auto;aspect-ratio:2/3;min-width:0;transform:none;--fan-rotate:none;border-width:2px;z-index:auto;touch-action:manipulation}
+#mesa #mano-j0 .carta:hover,#mesa #mano-j0 .carta:focus-visible{bottom:auto!important;transform:translateY(-8px)!important;z-index:20!important}
+#mesa #mano-j0 .carta .carta-img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:600px){#mesa{height:auto;min-height:100dvh;overflow:visible}#mesa .zona-abajo{margin-top:clamp(18px,4dvh,38px);padding:0 3px 18px}#mesa #mano-j0{width:min(100%,460px);gap:clamp(4px,1.4vw,8px)}#mesa #acciones .accion-label{max-width:100%;padding:0 4px;line-height:1.3;overflow-wrap:normal}#mesa:has(#acciones .accion-label) .zona-izq,#mesa:has(#acciones .accion-label) .zona-der{top:clamp(186px,28dvh,225px)}}
+#mesa #mano-j0:has(> .carta:nth-child(5):last-child){grid-template-columns:repeat(6,minmax(0,1fr));width:min(100%,330px);gap:6px}
+#mesa #mano-j0:has(> .carta:nth-child(5):last-child) .carta{grid-column:span 2}
+#mesa #mano-j0:has(> .carta:nth-child(5):last-child) .carta:nth-child(4){grid-column:2/span 2}
+@media(max-width:600px){#mesa #mano-j0:has(> .carta:nth-child(5):last-child){width:min(100%,300px)}#mesa .zona-abajo{margin-top:clamp(12px,3dvh,25px)}}
+@media(max-width:350px){#mesa .zona-arriba{top:85px}}
+
+
+/* Proposed test mode, isolated from standard modes. */
+.inicio-modos:has(.modo-testeo){grid-template-columns:repeat(3,minmax(0,1fr))}
+.modo-testeo{background:radial-gradient(circle at 90% 5%,#35526a,#1b3440 45%,#172a29 90%)}
+.modo-testeo .mode-table{font:700 20px 'Space Grotesk';border-color:#9fc4d2;color:#d8eff5}
+.testeo-nota{font-size:12px;color:#c3dfe5;margin:0 0 4px}
+.testeo-chip{font:700 10px 'Space Grotesk';letter-spacing:.8px;color:#d8eff5;background:#255067;border:1px solid #9fc4d2;padding:6px 8px;border-radius:30px}
+#mesa.modo-testeo #zona-j2 .mano{display:flex;flex-wrap:wrap;position:relative;gap:3px;max-width:320px;justify-content:center}
+#mesa.modo-testeo #zona-j2 .mano .carta{min-width:0;width:clamp(30px,9vw,48px);height:auto;aspect-ratio:2/3;position:relative;transform:none;left:auto;bottom:auto}
+#mesa.modo-testeo #zona-j2 .mano .carta.jugable{cursor:pointer;filter:none}
+#mesa.modo-testeo #zona-j2 .mano .carta.no-jugable{filter:brightness(.8)}
+#mesa.modo-testeo #zona-j2{top:78px;z-index:15}
+#mesa.modo-testeo .zona-arriba .nombre-jugador{background:#255067;border-color:#9fc4d2}
+#mesa.modo-testeo #mano-j0 .carta{opacity:.85}
+#mesa.modo-testeo:has(#turno-j2:not(.oculto)) #mano-j0 .carta{filter:brightness(.85)}
+#mesa.modo-testeo:has(#turno-j0:not(.oculto)) #mano-j2 .carta{filter:brightness(.85)}
+@media(max-width:900px){.inicio-modos:has(.modo-testeo){display:flex;flex-direction:column}.modo-testeo{min-height:235px}}
+@media(max-width:600px){#mesa.modo-testeo #zona-j2{top:68px;max-width:90vw}#mesa.modo-testeo #zona-j2 .mano{max-width:270px}#mesa.modo-testeo #zona-j2 .mano .carta{min-width:0;width:clamp(30px,9vw,39px)}#mesa.modo-testeo #centro{margin-top:90px}#mesa.modo-testeo .zona-abajo{margin-top:65px}.testeo-chip{font-size:9px;padding:4px 6px}}
+
+#mesa.modo-testeo #zona-j2 .mano .carta img{width:100%;height:100%;object-fit:cover}
+#mesa.modo-testeo #zona-j2 .mano .carta{flex:none!important;margin:0!important;inset:auto!important;--fan-rotate:rotate(0)!important}
+#mesa.modo-testeo #zona-j2 .mano .carta:hover{transform:translateY(-8px)!important}
+@media(max-width:600px){#mesa.modo-testeo #zona-j2{top:75px!important}#mesa.modo-testeo #zona-j2 .mano{max-width:320px;flex-wrap:nowrap;gap:0;overflow:visible}#mesa.modo-testeo #zona-j2 .mano .carta{width:clamp(34px,10vw,43px)!important;height:58px!important;margin-right:-5px!important}#mesa.modo-testeo #centro{margin-top:15px!important}#mesa.modo-testeo .zona-abajo{margin-top:0!important}}
+
+/* Two open hands: compact J2 fan above the trick, J0 remains below. */
+#mesa.modo-testeo #zona-j2 .mano .carta.no-jugable{opacity:.95;filter:brightness(.78)}
+#mesa.modo-testeo #zona-j2 .mano .carta.jugable{filter:none;box-shadow:0 0 0 2px #f2c56c}
+#mesa.modo-testeo #zona-j2 .mano .carta{z-index:auto!important}
+#mesa.modo-testeo #zona-j2{width:max-content}
+@media(max-width:600px){#mesa.modo-testeo #zona-j2{top:70px!important}#mesa.modo-testeo #zona-j2 .mano{gap:3px;max-width:calc(100vw - 28px);justify-content:center}#mesa.modo-testeo #zona-j2 .mano .carta{width:clamp(30px,8.5vw,38px)!important;height:auto!important;aspect-ratio:2/3;margin-right:0!important}#mesa.modo-testeo .baza-actual{margin-top:78px!important}#mesa.modo-testeo #centro .baza-slot{z-index:2}#mesa.modo-testeo .zona-abajo .mano{height:130px;overflow:visible}#mesa.modo-testeo #mano-j0 .carta{filter:brightness(.78)}}
+
+@media(max-width:600px){#mesa.modo-testeo #acciones{position:relative;z-index:25;background:#17492f;border-radius:6px;padding:5px 8px}#mesa.modo-testeo #acciones .accion-label{margin:0!important}#mesa.modo-testeo #zona-j2 .mano .carta.jugable{outline:2px solid #f2c56c;outline-offset:-2px}}
+
+@media(max-width:600px){#mesa.modo-testeo #acciones{margin-top:0!important}#mesa.modo-testeo #zona-j2 .nombre-jugador{z-index:5}#mesa.modo-testeo #zona-j2 .mano{z-index:4}}
+
+#mesa.modo-testeo #zona-j2 .mano .carta.carta-dorso{width:clamp(23px,6vw,32px)!important;height:43px!important;opacity:.7;box-shadow:none!important}
+@media(max-width:600px){#mesa.modo-testeo #zona-j2 .mano .carta.carta-dorso{width:26px!important;height:39px!important}}
+/* Keep the inactive partner's card count visible without using J0's large two-row art. */
+#mesa.modo-testeo #mano-j0 .carta.carta-dorso{width:clamp(32px,9vw,47px)!important;height:65px!important;position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;margin:0!important;border-width:1px!important;box-shadow:none!important;flex:none}
+#mesa.modo-testeo #mano-j0:has(.carta-dorso){display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-start;gap:2px;height:100px;width:min(370px,100%)}
+@media(max-width:600px){#mesa.modo-testeo #mano-j0 .carta.carta-dorso{width:clamp(30px,10vw,38px)!important;height:52px!important}#mesa.modo-testeo #mano-j0:has(.carta-dorso){height:100px;gap:2px}}
+
+
+
+/* ── Testeo: mano del compañero (J2) grande y legible ──────────────
+   Misma rejilla de 4 por fila que la mano propia; las cartas dejan de
+   ser una fila comprimida de miniaturas. Solo afecta a #mesa.modo-testeo. */
+#mesa.modo-testeo #zona-j2{width:min(330px,94vw)}
+#mesa.modo-testeo #zona-j2 .mano{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+  width:100%;
+  max-width:none;
+  justify-content:stretch;
+  justify-items:stretch;
+}
+#mesa.modo-testeo #zona-j2 .mano .carta{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:2/3;
+  margin-right:0!important;
+  position:relative!important;
+  left:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+}
+/* Dorsos (fase de subasta, manos aún ocultas) siguen pequeños. */
+#mesa.modo-testeo #zona-j2 .mano .carta.carta-dorso{
+  width:clamp(23px,6vw,32px)!important;
+  height:43px!important;
+  aspect-ratio:auto;
+  justify-self:center;
+}
+/* En móvil la rejilla ocupa dos filas: empujar la baza por debajo. */
+@media(max-width:600px){
+  #mesa.modo-testeo #zona-j2{top:64px!important}
+  #mesa.modo-testeo .baza-actual{margin-top:235px!important}
+  #mesa.modo-testeo .zona-abajo{margin-top:10px!important}
+}
+@media(max-width:350px){
+  #mesa.modo-testeo #zona-j2{width:94vw}
+  #mesa.modo-testeo .baza-actual{margin-top:225px!important}
+}
+
+/* ── Cantes del centro a una tira discreta en la esquina ─────────
+   La lista de cantes ya cantados deja de tapar el centro de la mesa:
+   pasa a una tira pequeña abajo a la izquierda, con scroll lateral. */
+#mesa #cantes-panel{
+  position:absolute;
+  left:8px;
+  bottom:8px;
+  z-index:15;
+  max-width:min(250px,58%);
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  white-space:nowrap;
+  font-size:10px;
+  padding:3px 7px;
+  background:#0d241ad9;
+  border:1px solid #ffffff26;
+  border-radius:8px;
+  scrollbar-width:none;
+}
+#mesa #cantes-panel::-webkit-scrollbar{display:none}
+#mesa #cantes-panel .cante-tag{font-size:10px;padding:1px 5px}
+#mesa #cantes-panel strong{font-size:10px}
+
+/* Botón ¡Bolot!/¡Rebolot! en el turno, antes de tirar la carta. */
+#mesa #acciones #btn-bolot-turno{
+  margin:6px;
+  background:#e8bf71;
+  color:#172322;
+  font-weight:700;
+}
+@media(max-width:600px){
+  #mesa #acciones #btn-bolot-turno{font-size:14px;min-height:44px}
+}
+
+/* ── Testeo móvil: layout en flujo, sin solapes ──────────────────
+   Cabecera / compañero / rivales / tapete / tu mano, uno tras otro.
+   La mano de J2 (rejilla 4×2) ya no queda bajo la baza. */
+@media(max-width:600px){
+  #mesa.modo-testeo{
+    grid-template-areas:
+      "cabecera cabecera"
+      "arriba   arriba"
+      "izq      der"
+      "centro   centro"
+      "abajo    abajo";
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto auto auto auto;
+    height:auto;
+    min-height:100dvh;
+    overflow:visible;
+  }
+  #mesa.modo-testeo #zona-j2{
+    position:static;
+    transform:none;
+    top:auto!important;
+    width:min(330px,94vw);
+    margin:0 auto;
+  }
+  #mesa.modo-testeo .zona-izq,
+  #mesa.modo-testeo .zona-der{
+    position:static;
+    transform:none;
+    flex-direction:row;
+    align-items:center;
+    gap:6px;
+  }
+  #mesa.modo-testeo .zona-izq{justify-self:end}
+  #mesa.modo-testeo .zona-der{justify-self:start}
+  #mesa.modo-testeo #centro{margin-top:0!important;width:100%}
+  #mesa.modo-testeo .baza-actual{margin-top:0!important}
+  #mesa.modo-testeo .zona-abajo{margin-top:0!important}
+}
+
+/* La tira de cantes no tapa el texto de turno en el tapete. */
+#mesa #cantes-panel{max-width:min(190px,44%);font-size:9px}
+#mesa #cantes-panel .cante-tag{font-size:9px}
+
